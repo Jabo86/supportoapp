@@ -3,138 +3,463 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supporto App</title>
+    <title>Supporto - App di Fabio Astorino</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #6b8cbc;
+            --dark-color: #2c3e50;
+            --light-color: #f8f9fa;
+            --accent-color: #e74c3c;
+            --text-color: #333;
+            --text-light: #666;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-            background-color: #f4f4f4;
+            color: var(--text-color);
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
         }
 
         header {
-            background: #333;
-            color: #fff;
+            background: linear-gradient(to right, var(--dark-color), var(--primary-color));
+            color: white;
             text-align: center;
-            padding: 10px 0;
+            padding: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         header h1 {
-            margin: 0;
-            font-size: 2em;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
         }
 
         nav {
-            background: #444;
-            padding: 10px 0;
-            text-align: center;
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
-        nav a {
-            color: #fff;
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-color);
             text-decoration: none;
-            margin: 0 15px;
-            font-size: 1.1em;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-        }
-
-        .container {
-            width: 80%;
-            margin: auto;
-            padding: 20px 0;
-        }
-
-        .section {
-            background: #fff;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .section h2 {
-            color: #333;
-        }
-
-        .contact-button {
-            display: inline-block;
-            padding: 12px 24px;
-            background: #333;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.1em;
-            transition: background 0.3s;
-        }
-
-        .contact-button:hover {
-            background: #555;
-        }
-
-        footer {
-            background: #333;
-            color: #fff;
-            text-align: center;
-            padding: 10px 0;
+            font-weight: 500;
+            transition: var(--transition);
             position: relative;
-            bottom: 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
             width: 100%;
         }
 
-        footer a {
-            color: #fff;
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .section {
+            background: white;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .section h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .section h2 i {
+            color: var(--secondary-color);
+        }
+
+        .section p {
+            margin-bottom: 1.5rem;
+            color: var(--text-light);
+            line-height: 1.7;
+        }
+
+        .contact-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2rem;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
             text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 8px rgba(74, 111, 165, 0.3);
         }
 
-        footer a:hover {
-            text-decoration: underline;
+        .contact-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(74, 111, 165, 0.4);
+            background: linear-gradient(to right, var(--secondary-color), var(--primary-color));
         }
 
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .faq-item {
+            background: var(--light-color);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary-color);
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            transform: translateX(5px);
+        }
+
+        .faq-item h3 {
+            color: var(--dark-color);
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .faq-item h3 i {
+            color: var(--primary-color);
+        }
+
+        .faq-item p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .feature {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            background: var(--light-color);
+            transition: var(--transition);
+        }
+
+        .feature:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature i {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature h3 {
+            margin-bottom: 0.8rem;
+            color: var(--dark-color);
+        }
+
+        footer {
+            background: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .copyright {
+            margin-top: 1rem;
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .container {
-                width: 90%;
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
             }
 
-            nav a {
-                display: block;
-                margin: 10px 0;
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .section h2 {
+                font-size: 1.5rem;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Supporto App</h1>
+        <h1>Supporto App di Fabio Astorino</h1>
+        <p>Assistenza dedicata per tutte le tue domande e problemi tecnici</p>
     </header>
 
     <nav>
-        <div class="container">
-            <a href="#home">Home</a>
-            <a href="#contatti">Contatti</a>
+        <div class="container nav-container">
+            <div class="logo">
+                <i class="fas fa-mobile-alt"></i>
+                <span>FABIO ASTORINO</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home"><i class="fas fa-home"></i> Home</a>
+                <a href="#contatti"><i class="fas fa-envelope"></i> Contatti</a>
+                <a href="#faq"><i class="fas fa-question-circle"></i> FAQ</a>
+            </div>
         </div>
     </nav>
 
     <div class="container">
         <!-- Sezione Benvenuto -->
         <div class="section" id="home">
-            <h1>Benvenuto nel Supporto delle App di Fabio Astorino</h2>
-            <p>Hai domande o bisogno di assistenza? Clicca sul pulsante qui sotto per inviarci un'email direttamente dal tuo client di posta. Risponderemo il prima possibile!</p>
+            <h2><i class="fas fa-hands-helping"></i> Benvenuto nel Centro Assistenza</h2>
+            <p>Grazie per utilizzare le nostre applicazioni! Siamo qui per aiutarti con qualsiasi domanda o problema tu possa avere. Scegli il metodo di supporto più adatto a te.</p>
+            
+            <div class="features">
+                <div class="feature">
+                    <i class="fas fa-envelope-open-text"></i>
+                    <h3>Supporto Email</h3>
+                    <p>Contattaci direttamente via email per assistenza personalizzata</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-question-circle"></i>
+                    <h3>FAQ Complete</h3>
+                    <p>Trova risposte rapide alle domande più frequenti</p>
+                </div>
+                <div class="feature">
+                    <i class="fas fa-clock"></i>
+                    <h3>Tempi Rapidissimi</h3>
+                    <p>Rispondiamo a tutte le richieste entro 24 ore</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sezione FAQ -->
+        <div class="section" id="faq">
+            <h2><i class="fas fa-question-circle"></i> Domande Frequenti (FAQ)</h2>
+            <p>Ecco alcune risposte alle domande più comuni che riceviamo dai nostri utenti.</p>
+            
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h3><i class="fas fa-sync-alt"></i> Come aggiornare l'app?</h3>
+                    <p>Vai sul tuo store (Google Play o App Store), cerca la nostra app e clicca su "Aggiorna" se disponibile.</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="fas fa-lock"></i> Problemi di accesso?</h3>
+                    <p>Controlla la tua connessione internet e verifica di utilizzare le credenziali corrette. Se il problema persiste, reimposta la password.</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="fas fa-bug"></i> L'app si blocca spesso?</h3>
+                    <p>Prova a chiudere completamente l'app e riavviarla. Se il problema persiste, reinstalla l'applicazione.</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="fas fa-euro-sign"></i> Problemi con gli acquisti?</h3>
+                    <p>Verifica il metodo di pagamento e la connessione. Se l'addebito è avvenuto ma non ricevi il servizio, contattaci con i dettagli dell'acquisto.</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="fas fa-download"></i> Non riesco a scaricare l'app</h3>
+                    <p>Assicurati di avere spazio sufficiente sul dispositivo e che la tua connessione internet sia stabile.</p>
+                </div>
+                <div class="faq-item">
+                    <h3><i class="fas fa-cog"></i> Funzionalità non disponibile</h3>
+                    <p>Alcune funzionalità potrebbero non essere disponibili sul tuo dispositivo o versione del sistema operativo. Controlla i requisiti dell'app.</p>
+                </div>
+            </div>
         </div>
 
         <!-- Sezione Contatti -->
         <div class="section" id="contatti">
-            <h2>Contattaci</h2>
-            <p>Per qualsiasi dubbio o problema, scrivici direttamente:</p>
-            <a href="mailto:astorinofabio86@gmail.com?subject=Domanda su [Nome Tua App]" class="contact-button">Invia un'Email</a>
+            <h2><i class="fas fa-envelope"></i> Contattaci</h2>
+            <p>Hai bisogno di assistenza personalizzata? Non esitare a contattarci! Il nostro team di supporto è pronto ad aiutarti con qualsiasi problema o domanda.</p>
+            <p>Risponderemo al più presto, di solito entro 24 ore durante i giorni lavorativi.</p>
+            
+            <a href="mailto:astorinofabio86@gmail.com?subject=Supporto App&body=Salve,%0D%0A%0D%0AVorrei ricevere assistenza riguardo:" class="contact-button">
+                <i class="fas fa-paper-plane"></i> Invia un'Email
+            </a>
         </div>
     </div>
 
     <footer>
-        <p>&copy; 2025 Fabio Astorino. Tutti i diritti riservati. | <a href="privacy.html">Privacy Policy</a></p>
+        <div class="container footer-content">
+            <div class="footer-links">
+                <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
+                <a href="#"><i class="fas fa-file-contract"></i> Termini di Servizio</a>
+                <a href="#"><i class="fas fa-info-circle"></i> Chi Siamo</a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 FABIO ASTORINO. Tutti i diritti riservati.</p>
+            </div>
+        </div>
     </footer>
+
+    <script>
+        // Smooth scrolling per i link di navigazione
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Aggiunge un effetto di highlight alla sezione attiva durante lo scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if(scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
