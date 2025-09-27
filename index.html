@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Supporto - AppTurni</title>
+    <title>Supporto App - Fabio Astorino</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -150,44 +150,92 @@
             line-height: 1.7;
         }
 
-        .app-info {
+        .apps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .app-card {
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .app-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .app-header {
             background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
             color: white;
-            padding: 2rem;
-            border-radius: var(--border-radius);
+            padding: 1.5rem;
             text-align: center;
-            margin-bottom: 2rem;
-            box-shadow: var(--box-shadow);
         }
 
-        .app-info h2 {
-            color: white;
-            font-size: 2rem;
-            margin-bottom: 1rem;
+        .app-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
         }
 
-        .app-info p {
+        .app-header p {
             color: rgba(255, 255, 255, 0.9);
-            font-size: 1.1rem;
+            margin: 0;
+        }
+
+        .app-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .app-description {
             margin-bottom: 1.5rem;
+            flex-grow: 1;
         }
 
         .platform-badges {
             display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 1.5rem;
+            gap: 0.8rem;
+            margin-bottom: 1.5rem;
         }
 
         .platform-badge {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 0.8rem 1.5rem;
+            background: var(--light-color);
+            padding: 0.5rem 1rem;
             border-radius: 50px;
+            font-size: 0.9rem;
             font-weight: 600;
             display: flex;
             align-items: center;
+            gap: 0.3rem;
+        }
+
+        .app-support-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
             gap: 0.5rem;
-            backdrop-filter: blur(10px);
+            padding: 0.8rem 1.5rem;
+            background: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            transition: var(--transition);
+            margin-top: auto;
+        }
+
+        .app-support-button:hover {
+            background: var(--secondary-color);
+            transform: translateY(-2px);
         }
 
         .contact-button {
@@ -203,7 +251,6 @@
             font-size: 1.1rem;
             transition: var(--transition);
             box-shadow: 0 4px 8px rgba(74, 111, 165, 0.3);
-            margin-top: 1rem;
         }
 
         .contact-button:hover {
@@ -333,17 +380,16 @@
                 padding: 1.5rem;
             }
 
+            .apps-grid {
+                grid-template-columns: 1fr;
+            }
+
             .faq-grid {
                 grid-template-columns: 1fr;
             }
 
             .features {
                 grid-template-columns: 1fr;
-            }
-
-            .platform-badges {
-                flex-direction: column;
-                align-items: center;
             }
         }
 
@@ -360,27 +406,24 @@
             .section h2 {
                 font-size: 1.5rem;
             }
-
-            .app-info h2 {
-                font-size: 1.7rem;
-            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Supporto AppTurni</h1>
-        <p>La tua prima app per la gestione dei turni di lavoro - Sviluppata da Fabio Astorino</p>
+        <h1>Supporto App - Fabio Astorino</h1>
+        <p>Centro assistenza per tutte le applicazioni sviluppate da Fabio Astorino</p>
     </header>
 
     <nav>
         <div class="container nav-container">
             <div class="logo">
-                <i class="fas fa-calendar-alt"></i>
-                <span>AppTurni</span>
+                <i class="fas fa-mobile-alt"></i>
+                <span>FABIO ASTORINO</span>
             </div>
             <div class="nav-links">
                 <a href="#home"><i class="fas fa-home"></i> Home</a>
+                <a href="#apps"><i class="fas fa-th"></i> Le Mie App</a>
                 <a href="#contatti"><i class="fas fa-envelope"></i> Contatti</a>
                 <a href="#faq"><i class="fas fa-question-circle"></i> FAQ</a>
             </div>
@@ -388,91 +431,131 @@
     </nav>
 
     <div class="container">
-        <!-- Sezione Informazioni App -->
-        <div class="app-info">
-            <h2>AppTurni</h2>
-            <p>La prima applicazione sviluppata da Fabio Astorino per semplificare la gestione dei turni di lavoro</p>
-            <div class="platform-badges">
-                <div class="platform-badge">
-                    <i class="fab fa-apple"></i> iOS
-                </div>
-                <div class="platform-badge">
-                    <i class="fab fa-android"></i> Android
-                </div>
-            </div>
-        </div>
-
         <!-- Sezione Benvenuto -->
         <div class="section" id="home">
-            <h2><i class="fas fa-hands-helping"></i> Benvenuto nel Centro Assistenza di AppTurni</h2>
-            <p>Grazie per utilizzare AppTurni! Questa è la mia prima applicazione, creata per semplificare la gestione dei turni di lavoro. Sono qui per aiutarti con qualsiasi domanda o problema tu possa avere.</p>
+            <h2><i class="fas fa-hands-helping"></i> Benvenuto nel Centro Assistenza</h2>
+            <p>Grazie per utilizzare le mie applicazioni! Sono Fabio Astorino, sviluppatore di app per iOS e Android. Questo è il centro unificato di supporto per tutte le mie applicazioni.</p>
             
             <div class="features">
                 <div class="feature">
                     <i class="fas fa-envelope-open-text"></i>
-                    <h3>Supporto Diretto</h3>
-                    <p>Contattami direttamente via email per assistenza personalizzata</p>
+                    <h3>Supporto Personalizzato</h3>
+                    <p>Contattami direttamente per assistenza specifica su qualsiasi app</p>
                 </div>
                 <div class="feature">
                     <i class="fas fa-question-circle"></i>
-                    <h3>FAQ Complete</h3>
-                    <p>Trova risposte rapide alle domande più frequenti su AppTurni</p>
+                    <h3>FAQ Dedicata</h3>
+                    <p>Trova risposte rapide alle domande più frequenti</p>
                 </div>
                 <div class="feature">
                     <i class="fas fa-lightbulb"></i>
                     <h3>Suggerimenti</h3>
-                    <p>Hoi idee per migliorare AppTurni? Condividile con me!</p>
+                    <p>Hai idee per migliorare le mie app? Condividile con me!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sezione App -->
+        <div class="section" id="apps">
+            <h2><i class="fas fa-th"></i> Le Mie Applicazioni</h2>
+            <p>Scopri tutte le app che ho sviluppato. Clicca su "Supporto per questa app" per ricevere assistenza specifica.</p>
+            
+            <div class="apps-grid">
+                <!-- AppTurni -->
+                <div class="app-card">
+                    <div class="app-header">
+                        <h3>AppTurni</h3>
+                        <p>Gestione turni di lavoro semplificata</p>
+                    </div>
+                    <div class="app-content">
+                        <div class="app-description">
+                            <p>AppTurni ti aiuta a organizzare e gestire i turni di lavoro in modo semplice e intuitivo. Ideale per chi lavora a turni e ha bisogno di tenere traccia dei propri orari.</p>
+                        </div>
+                        <div class="platform-badges">
+                            <div class="platform-badge">
+                                <i class="fab fa-apple"></i> iOS
+                            </div>
+                            <div class="platform-badge">
+                                <i class="fab fa-android"></i> Android
+                            </div>
+                        </div>
+                        <a href="mailto:astorinofabio86@gmail.com?subject=Supporto AppTurni&body=Salve Fabio,%0D%0A%0D%0AVorrei ricevere assistenza riguardo AppTurni.%0D%0A%0D%0ADispositivo:%0D%0ASistema Operativo:%0D%0AProblema:%0D%0A%0D%0AGrazie!" class="app-support-button">
+                            <i class="fas fa-life-ring"></i> Supporto per questa app
+                        </a>
+                    </div>
+                </div>
+
+                <!-- App in Sviluppo -->
+                <div class="app-card">
+                    <div class="app-header">
+                        <h3>Prossimamente</h3>
+                        <p>Nuove app in sviluppo</p>
+                    </div>
+                    <div class="app-content">
+                        <div class="app-description">
+                            <p>Sto lavorando a nuove applicazioni innovative. Torna presto per scoprire le prossime novità!</p>
+                        </div>
+                        <div class="platform-badges">
+                            <div class="platform-badge">
+                                <i class="fas fa-tools"></i> In Sviluppo
+                            </div>
+                        </div>
+                        <a href="mailto:astorinofabio86@gmail.com?subject=Idea per nuova app&body=Salve Fabio,%0D%0A%0D%0AVorrei suggerirti un'idea per una nuova app:%0D%0A%0D%0AIdea:%0D%0A%0D%0ACordiali saluti!" class="app-support-button">
+                            <i class="fas fa-lightbulb"></i> Suggerisci un'idea
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Sezione FAQ -->
         <div class="section" id="faq">
-            <h2><i class="fas fa-question-circle"></i> Domande Frequenti su AppTurni</h2>
-            <p>Ecco alcune risposte alle domande più comuni che ricevo dagli utenti di AppTurni.</p>
+            <h2><i class="fas fa-question-circle"></i> Domande Frequenti (FAQ)</h2>
+            <p>Ecco alcune risposte alle domande più comuni che ricevo dagli utenti delle mie app.</p>
             
             <div class="faq-grid">
                 <div class="faq-item">
-                    <h3><i class="fas fa-sync-alt"></i> Come aggiornare AppTurni?</h3>
-                    <p>Vai sul tuo store (Google Play o App Store), cerca AppTurni e clicca su "Aggiorna" se disponibile.</p>
+                    <h3><i class="fas fa-sync-alt"></i> Come aggiornare le app?</h3>
+                    <p>Vai sul tuo store (Google Play o App Store), cerca l'app e clicca su "Aggiorna" se disponibile.</p>
                 </div>
                 <div class="faq-item">
-                    <h3><i class="fas fa-calendar-plus"></i> Come aggiungere un nuovo turno?</h3>
-                    <p>Nella schermata principale, clicca sul pulsante "+" e compila i dettagli del turno.</p>
+                    <h3><i class="fas fa-lock"></i> Problemi di accesso?</h3>
+                    <p>Controlla la connessione internet e verifica le credenziali. Se il problema persiste, contattami.</p>
                 </div>
                 <div class="faq-item">
                     <h3><i class="fas fa-bug"></i> L'app si blocca spesso?</h3>
                     <p>Prova a chiudere completamente l'app e riavviarla. Se il problema persiste, reinstalla l'applicazione.</p>
                 </div>
                 <div class="faq-item">
-                    <h3><i class="fas fa-bell"></i> Non ricevo notifiche per i turni</h3>
-                    <p>Verifica le impostazioni delle notifiche sia nell'app che nelle impostazioni del tuo dispositivo.</p>
+                    <h3><i class="fas fa-euro-sign"></i> Problemi con gli acquisti?</h3>
+                    <p>Verifica il metodo di pagamento. Se l'addebito è avvenuto ma non ricevi il servizio, contattami con i dettagli.</p>
                 </div>
                 <div class="faq-item">
-                    <h3><i class="fas fa-cloud-download-alt"></i> I dati vengono salvati nel cloud?</h3>
-                    <p>Attualmente AppTurni salva i dati localmente sul dispositivo. Stiamo lavorando per aggiungere il salvataggio cloud.</p>
+                    <h3><i class="fas fa-download"></i> Non riesco a scaricare l'app</h3>
+                    <p>Assicurati di avere spazio sufficiente sul dispositivo e che la connessione internet sia stabile.</p>
                 </div>
                 <div class="faq-item">
                     <h3><i class="fas fa-cog"></i> Funzionalità non disponibile</h3>
-                    <p>Alcune funzionalità potrebbero non essere disponibili sulla tua versione di AppTurni. Controlla gli aggiornamenti.</p>
+                    <p>Alcune funzionalità potrebbero non essere disponibili sul tuo dispositivo. Controlla i requisiti dell'app.</p>
                 </div>
             </div>
         </div>
 
         <!-- Sezione Contatti -->
         <div class="section" id="contatti">
-            <h2><i class="fas fa-envelope"></i> Contattami per Supporto</h2>
-            <p>Hai bisogno di assistenza con AppTurni? Non esitare a contattarmi! Come sviluppatore unico di questa app, mi impegno a rispondere personalmente a tutte le richieste di supporto.</p>
+            <h2><i class="fas fa-envelope"></i> Contattami</h2>
+            <p>Hai bisogno di assistenza personalizzata? Non esitare a contattarmi! Come sviluppatore delle app, mi impegno a rispondere personalmente a tutte le richieste di supporto.</p>
             <p>Per aiutarmi a risolvere il tuo problema più rapidamente, per favore specifica nel messaggio:</p>
             <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem; color: var(--text-light);">
-                <li>Il modello del tuo dispositivo (es. iPhone 12, Samsung Galaxy S21, ecc.)</li>
+                <li>Il nome dell'app con cui hai problemi</li>
+                <li>Il modello del tuo dispositivo</li>
                 <li>La versione del sistema operativo</li>
                 <li>Una descrizione dettagliata del problema</li>
-                <li>Eventuali screenshot che possano aiutare a capire il problema</li>
+                <li>Eventuali screenshot che possano aiutare</li>
             </ul>
             
-            <a href="mailto:astorinofabio86@gmail.com?subject=Supporto AppTurni&body=Salve Fabio,%0D%0A%0D%0AVorrei ricevere assistenza riguardo AppTurni.%0D%0A%0D%0ADispositivo:%0D%0ASistema Operativo:%0D%0AProblema:%0D%0A%0D%0AGrazie!" class="contact-button">
-                <i class="fas fa-paper-plane"></i> Invia un'Email a Fabio
+            <a href="mailto:astorinofabio86@gmail.com?subject=Supporto App&body=Salve Fabio,%0D%0A%0D%0AVorrei ricevere assistenza riguardo:%0D%0A%0D%0ANome App:%0D%0ADispositivo:%0D%0ASistema Operativo:%0D%0AProblema:%0D%0A%0D%0AGrazie!" class="contact-button">
+                <i class="fas fa-paper-plane"></i> Invia un'Email
             </a>
         </div>
     </div>
@@ -484,7 +567,7 @@
                 <a href="#"><i class="fas fa-file-contract"></i> Termini di Servizio</a>
             </div>
             <div class="copyright">
-                <p>AppTurni - Sviluppata da Fabio Astorino</p>
+                <p>Sviluppato da Fabio Astorino</p>
                 <p>&copy; 2025 FABIO ASTORINO. Tutti i diritti riservati.</p>
             </div>
         </div>
